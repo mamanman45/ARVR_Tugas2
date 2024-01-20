@@ -1,0 +1,55 @@
+<html>
+
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+
+  <body>
+
+    <a-assets>
+      <img id="tronThumbnail" src="tron.jpg">
+      <img id="chessThumbnail" src="chess.jpg">
+      <img id="marsThumbnail" src="mars.jpg">
+    </a-assets>
+
+    <!-- Asset! -->
+    <a-scene>
+
+      <a-sphere 
+      src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_4096.jpg"
+      radius="2"
+      segment-height="53"
+      position="1 10 -5"></a-sphere>
+
+      <!-- Plane link w/ flat image -->
+        <a-entity id="planeLink"
+        position="0 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #tronThumbnail; side: front;"
+        link="href: tron.html;"></a-entity>
+
+        <a-entity id="planeLink"
+        position="1 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #chessThumbnail; side: front;"
+        link="href: index.html;"></a-entity>
+
+        <a-entity id="planeLink"
+        position="-1 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #marsThumbnail; side: front;"
+        link="href: mars.html;"></a-entity>
+
+
+  <!-- Out of the box environment! -->
+      <a-entity environment="preset: egypt; dressingAmount: 10;"></a-entity>
+
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+
+  </body>
+
+</html>

@@ -1,0 +1,63 @@
+<html>
+
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"></script>
+  </head>
+
+  <body>
+
+    <a-assets>
+			<a-asset-items id="castle" src="models/chess_castle/scene.gltf"></a-asset-items>
+      <a-asset-items id="queen" src="models/chess_queen/scene.gltf"></a-asset-items>
+      <a-asset-items id="king" src="models/chess_king/scene.gltf"></a-asset-items>
+      <img id="tronThumbnail" src="tron.jpg">
+      <img id="marsThumbnail" src="mars.jpg">
+      <img id="egyptThumbnail" src="egypt.jpg">
+    </a-assets>
+
+    <!-- Asset! -->
+    <a-scene>
+      <a-entity gltf-model="#castle" position="1 1.2 -5" scale="0.5 0.5 0.5"></a-entity>
+      <a-entity gltf-model="#queen" position="3 1.2 -5" scale="0.75 0.75 0.75"
+      animation__mouseenter="property: object3D.position.z; to: 3; dir: alternate; dur: 2000; startEvents: mouseenter"
+      animation__mouseleave="property: object3D.position.z; to: -5; dir: alternate; dur: 2000; startEvents: mouseleave"></a-entity>
+      <a-entity gltf-model="#king" position="-1 2.2 -5" scale="1.5 1.5 1.5"></a-entity>
+
+      <a-sphere 
+      src="https://raw.githubusercontent.com/aframevr/sample-assets/master/assets/images/space/earth_atmos_4096.jpg"
+      radius="2"
+      segment-height="53"
+      position="1 10 -5"></a-sphere>
+
+      <!-- Plane link w/ flat image -->
+      <a-entity id="planeLink"
+        position="0 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #tronThumbnail; side: front;"
+        link="href: tron.html;"></a-entity>
+
+        <a-entity id="planeLink"
+        position="1 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #egyptThumbnail; side: front;"
+        link="href: egypt.html;"></a-entity>
+
+        <a-entity id="planeLink"
+        position="-1 3 0" rotation="0 0 0" scale="1 1 1"
+        geometry="primitive: plane; height: 1; width: 1;"
+        material="shader: flat; src: #marsThumbnail; side: front;"
+        link="href: mars.html;"></a-entity>
+
+
+  <!-- Out of the box environment! -->
+      <a-entity environment="preset: checkerboard; dressingAmount: 100; skyColor: skyblue; horizonColor: #db6d4c;"></a-entity>
+
+      <a-camera>
+        <a-cursor></a-cursor>
+      </a-camera>
+    </a-scene>
+
+  </body>
+
+</html>
